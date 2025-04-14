@@ -92,6 +92,9 @@ int HowManyMinutes(int fH, int fM, int sH, int sM) {
     int totaltimeFirst = (fH * 60) + fM;
     int totaltimeSecond = (sH * 60) + sM;
     int time_difference = totaltimeSecond - totaltimeFirst;
+    if (time_difference < 0) {
+        time_difference += 1440;
+    }
     return time_difference;
 }
 int HowManyHoursAndMins(int x, int fH, int fM, int sH, int sM) {
@@ -101,11 +104,17 @@ int HowManyHoursAndMins(int x, int fH, int fM, int sH, int sM) {
         totaltime = (totaltime - 60);
     }
     if (x == 0) {
+        if (hours < 0) {
+            hours += 24;
+        }
         std::cout << NeedPrintZero(hours, false);
         return hours;
     }
     else
     {
+        if (totaltime < 0) {
+            totaltime += 1440;
+        }
         std::cout << NeedPrintZero(totaltime, false);
         return totaltime;
     }
@@ -118,5 +127,8 @@ double HowManyHoursAndMinsWithDecimal(int fH, int fM, int sH, int sM) {
     }
     double tempint = totaltime;
     totaltime = (tempint / 60) + hours;
+    if (totaltime < 0) {
+        totaltime += 24;
+    }
     return totaltime;
 }
