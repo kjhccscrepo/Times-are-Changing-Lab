@@ -81,7 +81,7 @@ void ValidateUserInput(int whatnum, int& hours, int& mins) {
     while (UserInvalidInput)
     {
         if (validate_user_string(whatnum, hours, mins)) {
-            std::cout << "\nInvalid Input! Please only enter your time in XX:XX formatting...\nTry again!";
+            std::cout << "\nInvalid Input! Please only enter your time in XX:XX formatting...\nTry again!\n";
         }
         else {
             UserInvalidInput = false;
